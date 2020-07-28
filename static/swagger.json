@@ -1,0 +1,103 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "",
+    "title": "Quotes & Facts API",
+    "license": {
+      "name": "",
+      "url": "https://quotesapi--arunkumard.repl.co"
+    }
+  },
+  "host": "quotesapi--arunkumard.repl.co",
+  "basePath": "/api",
+  "securityDefinitions": {},
+  "schemes": [
+    "https"
+  ],
+  "consumes": [
+    "text/plain"  
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/quotes/funny": {
+      "get": {
+        "description": "funny quotes",
+        "tags": [
+          "images"
+        ],
+       "produces": [
+          "application/json"
+        ],
+               "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+     "/quotes/motivation": {
+      "get": {
+        "description": "funny quotes",
+        "tags": [
+          "images"
+        ],
+       "produces": [
+          "application/json"
+        ],
+               "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+    ,
+     "/facts/random": {
+      "get": {
+        "description": "funny quotes",
+        "tags": [
+          "images"
+        ],
+       "produces": [
+          "application/json"
+        ],
+               "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+    ,
+     "/facts/technology": {
+      "get": {
+        "description": "funny quotes",
+        "tags": [
+          "images"
+        ],
+       "produces": [
+          "application/json"
+        ],
+               "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  }
+}
