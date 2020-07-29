@@ -1,10 +1,10 @@
 {
   "swagger": "2.0",
   "info": {
-    "version": "",
+    "version": "1.0",
     "title": "Quotes & Facts API",
     "license": {
-      "name": "",
+      "name": "Quotes & Facts API",
       "url": "https://quotesapi--arunkumard.repl.co"
     }
   },
@@ -42,7 +42,7 @@
     },
      "/quotes/motivation": {
       "get": {
-        "description": "funny quotes",
+        "description": "motivation quotes",
         "tags": [
           "images"
         ],
@@ -62,7 +62,7 @@
     ,
      "/facts/random": {
       "get": {
-        "description": "funny quotes",
+        "description": "random facts",
         "tags": [
           "images"
         ],
@@ -82,7 +82,7 @@
     ,
      "/facts/technology": {
       "get": {
-        "description": "funny quotes",
+        "description": "facts technology",
         "tags": [
           "images"
         ],
