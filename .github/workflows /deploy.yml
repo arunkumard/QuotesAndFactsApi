@@ -1,0 +1,32 @@
+name: Deploy to APIM
+
+# Controls when the action will run. Workflow runs when manually triggered using the UI
+# or API.
+on:
+  workflow_dispatch:
+    inputs:
+      releaseVersion:
+        description: " 1.13.5"
+
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "greet"
+  install-cli:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+    
+    # Use "environment" if you define one or more in your repo
+
+    environment: dev
+    
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+    - uses: actions/checkout@v1
+    # Runs a single command using the runners shell
+    - name: Download and untar the tool
+      run: |
+        wget -qO- https://github.com/Axway-API-Management-Plus/apim-cli/releases/download/1.14.1/axway-apimcli-1.14.1.tar.gz | tar xfz  -
+    - name: Import API into API Manager
+      run: |
+        apim-cli-1.14.1/scripts/apim.sh api import -a static/swagger.json -c api-config.json -p ${{ secrets.password }} -u ${{ secrets.username }} -h ${{ secrets.host }}
