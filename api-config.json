@@ -1,0 +1,8 @@
+{
+    "name": "Test API",
+    "path": "/demoapi/v1",
+    "state": "published",
+    "version": "1.0.0",
+    "organization": "API Development",
+    "backendBasepath": "http://localhost:4010"
+}
