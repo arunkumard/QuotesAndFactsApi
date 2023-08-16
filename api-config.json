@@ -5,4 +5,58 @@
     "version": "1.0.0",
     "organization": "API Development",
     "backendBasepath": "http://quotesapi--arunkumard.repl.co"
+	"tags": {
+		"nextStage": ["preprod"],
+    "status": ["Beta"],
+    "apiType": ["Quotes Facts"],
+    "publisher": ["test"]
+	},
+    "securityProfiles":[
+          {
+             "name":"_default",
+             "isDefault":true,
+             "devices":[
+                {
+                   "name":"API Key",
+                   "type":"apiKey",
+                   "order":0,
+                   "properties":{
+                      "apiKeyFieldName":"KeyId",
+                      "takeFrom":"HEADER",
+                      "removeCredentialsOnSuccess":"false"
+                   }
+                }
+             ]
+          }
+    ],
+	"clientOrganizations": [
+		"ALL"
+	],
+	"applications": [{
+		"name": "amplify_central"
+	}],
+	"systemQuota": {
+		"restrictions": [{
+			"method": "*",
+			"type": "throttle",
+			"config": {
+				"period": "hour",
+				"messages": 60,
+				"per": 2
+			}
+		}]
+	},
+  "applicationQuota":{
+      "restrictions":[
+         {
+            "method":"*",
+            "type":"throttlemb",
+            "config":{
+               "period":"hour",
+               "mb":55,
+               "per":1
+            }
+         }
+      ]
+   }
 }
