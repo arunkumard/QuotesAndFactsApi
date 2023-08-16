@@ -29,4 +29,4 @@ jobs:
         wget -qO- https://github.com/Axway-API-Management-Plus/apim-cli/releases/download/1.14.1/axway-apimcli-1.14.1.tar.gz | tar xfz  -
     - name: Import API into API Manager
       run: |
-        apim-cli-1.14.1/scripts/apim.sh api import -a static/swagger.json -c api-config.json -p ${{ secrets.password }} -u ${{ secrets.username }} -h ${{ secrets.host }}
+        apim-cli-1.14.1/scripts/apim.sh api import -a static/swagger.json -c api-config.json -p ${{ secrets.PASSWORD }} -u ${{ secrets.USERNAME }} -h ${{ secrets.HOST }}
