@@ -1,0 +1,230 @@
+openapi: 3.0.1
+info:
+  title: Posts
+  description: ''
+  version: '1.0'
+servers:
+  - url: https://jsonplaceholder.typicode.com/posts
+paths:
+  /:
+    get:
+      summary: Gets a collection of Posts.
+      description: >-
+        Queries all Post. On success, **200 OK** is returned, even if no items
+        were found.
+      operationId: Get all Posts
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostArray'
+        '500':
+          description: Internal Server Error
+          content: {}
+    post:
+      summary: Creates a new instance of Post.
+      description: >-
+        The Post can only be created if you have permissions to create. 
+        Otherwise, a **403 Forbidden** error is returned. If the *body*
+        parameter is not a valid *Post*, then a **400 Bad Request** error is
+        returned.  On success, **201 Created** is returned.
+      operationId: Create Post
+      requestBody:
+        description: The Post to create
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Post'
+        required: true
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostArray'
+        '400':
+          description: Bad Request
+          content: {}
+        '403':
+          description: Forbidden
+          content: {}
+        '500':
+          description: Internal Server Error
+          content: {}
+      x-codegen-request-body-name: body
+  /{id}:
+    get:
+      summary: Gets an existing Post by id.
+      description: Gets Post by id.
+      operationId: Get Post
+      parameters:
+        - name: id
+          in: path
+          description: The Post identifier
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Post'
+        '404':
+          description: Not found
+          content: {}
+        '500':
+          description: Internal Server Error
+          content: {}
+      x-axway: {}
+    put:
+      summary: Updates an existing Post by id.
+      description: >-
+        The Post can only be updated if you have permissions to update. 
+        Otherwise, a **403 Forbidden** error is returned. If the *body*
+        parameter is not a valid *Post*, then a **400 Bad Request** error is
+        returned.  On success, **200 OK** is returned.
+      operationId: Update Post
+      parameters:
+        - name: id
+          in: path
+          description: The Post identifier
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: The Post to update
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Post'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Post'
+        '400':
+          description: Bad Request
+          content: {}
+        '403':
+          description: Forbidden
+          content: {}
+        '500':
+          description: Internal Server Error
+          content: {}
+      x-axway: {}
+      x-codegen-request-body-name: body
+    delete:
+      summary: Delete an existing Post by id.
+      description: >-
+        The Post can only be updated if you have permissions to delete. 
+        Otherwise, a **403 Forbidden** error is returned. If the *id* parameter
+        is not valid or not found, then a **400 Bad Request** error is
+        returned.  On success, **204 No Content** is returned.
+      operationId: Delete Post
+      parameters:
+        - name: id
+          in: path
+          description: The Post identifier
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: No Content
+          content: {}
+        '403':
+          description: Forbidden
+          content: {}
+        '500':
+          description: Internal Server Error
+          content: {}
+  /{postId}/comments: 
+    get:
+      summary: Gets an existing Comment by Post Id.
+      description: Gets Post by id.
+      operationId: Get Comments by Post
+      parameters:
+        - name: postId
+          in: path
+          description: The Post identifier
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommentArray'
+        '404':
+          description: Not found
+          content: {}
+        '500':
+          description: Internal Server Error
+          content: {}
+      x-axway: {}  
+components:
+  schemas:
+    Post:
+      required:
+        - body
+        - id
+        - title
+        - userId
+      type: object
+      properties:
+        userId:
+          type: integer
+          description: The user's userId
+        id:
+          type: string
+          description: The item's unique identifier
+        title:
+          type: string
+          description: The Post's title
+        body:
+          type: string
+          description: The Post's body
+    PostArray:
+      type: array
+      items:
+        $ref: '#/components/schemas/Post'
+    Comment:
+      required:
+        - postId      
+        - body
+        - id
+        - name
+        - email
+      type: object
+      properties:
+        postId:
+          type: integer
+          description: The Comments PostId
+        id:
+          type: integer
+          description: The item's unique identifier
+        name:
+          type: string
+          description: The name of the commentor
+        body:
+          type: string
+          description: The comment's body
+        email:
+          type: string
+          description: The email of the commentor 
+    CommentArray:
+      type: array
+      items:
+        $ref: '#/components/schemas/Comment'    
+    
+          
